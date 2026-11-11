@@ -147,7 +147,7 @@ def main():
             for i, (link, loc) in enumerate(d.placements):
                 nm = d.name if len(d.placements) == 1 else f"{d.name}_{i + 1}"
                 assy.add(d.shape.val(), name=nm, loc=wl[link] * loc, color=cq.Color(*d.color, 1.0))
-        assy.save(os.path.join(OUT, "agrobot_assembly.step"))
+        getattr(assy, "export", assy.save)(os.path.join(OUT, "agrobot_assembly.step"))
         print("assembly STEP written")
     print(f"done in {time.time() - t0:.1f}s")
     return 0 if ok_all else 1

@@ -30,14 +30,13 @@ firmware/
 | Control core unit tests on a PC (`make -C firmware/test_host test`) | **pass**, 127,470 assertions |
 | Control core driving the physics simulation (same C++, via ctypes) | **pass**, see [simulation.md](simulation.md) |
 | `src/*.cpp` type-checked against stub Arduino headers (`make sketch-check`) | **pass** |
-| Compiled with the real ESP32 toolchain (`pio run`) | **not done**: the build machine could not reach the PlatformIO registry |
+| Compiled with the real ESP32 toolchain (`pio run`) | **pass** in GitHub Actions (`.github/workflows/ci.yml`) |
 | Run on an ESP32 with real motors, servos and sensors | **not done** |
-| `esp32cam/esp32cam.ino` | **not compiled, not run** |
+| `esp32cam/esp32cam.ino` on a camera module | **not done** (it is compiled in CI) |
 
-So the logic is tested; the hardware layer is written carefully against the
-documented Arduino-ESP32 APIs but is unproven. Expect to fix small things
-on the first `pio run` and on first power-up (pin polarity, servo
-direction, a register value). The code supports both Arduino-ESP32 core 2.x
+So the logic is tested and the whole firmware builds, but the hardware
+layer has never talked to real chips. Expect to fix small things on first
+power-up (pin polarity, servo direction, a register value). The code supports both Arduino-ESP32 core 2.x
 and 3.x LEDC APIs.
 
 ## Build and flash

@@ -1,11 +1,11 @@
 // AgroBot camera: AI-Thinker ESP32-CAM streaming MJPEG to the control panel.
-// Open in the Arduino IDE (board "AI Thinker ESP32-CAM"), set the SSID below
-// to the robot's access point, flash with an FTDI adapter (IO0 to GND).
+// Set the SSID below to the robot's access point, then either open this file in
+// the Arduino IDE (board "AI Thinker ESP32-CAM") or run
+//   pio run -d firmware/esp32cam -t upload
+// with the ESP32-CAM-MB USB board or an FTDI adapter (IO0 to GND).
 // Stream:  http://<camera ip>/stream     (the first client of the AP gets 192.168.4.2)
 //
-// NOTE: this sketch was written against the Espressif camera API but has not
-// been compiled or run in this repository's CI (the ESP32 toolchain was not
-// available when it was written).  Treat it as a starting point.
+// Compiled in CI (PlatformIO, board esp32cam) but not yet run on a camera module.
 #include <WiFi.h>
 #include <WebServer.h>
 #include "esp_camera.h"

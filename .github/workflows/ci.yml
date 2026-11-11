@@ -31,8 +31,10 @@ jobs:
           key: pio-${{ hashFiles('firmware/platformio.ini') }}
       - name: Install PlatformIO
         run: pip install platformio
-      - name: Build
+      - name: Build the robot firmware
         run: pio run -d firmware
+      - name: Build the camera sketch
+        run: pio run -d firmware/esp32cam
 
   cad:
     name: CAD (build, fit check, clash check)
