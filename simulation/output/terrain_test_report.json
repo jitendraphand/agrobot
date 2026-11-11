@@ -1,0 +1,62 @@
+{
+ "scenario": "terrain",
+ "events": [
+  [
+   1.0,
+   "> ARM STOW   OK"
+  ],
+  [
+   2.28,
+   "> MOVE 2500 300   OK"
+  ],
+  [
+   12.69,
+   "> MOVE 1100 200   OK"
+  ],
+  [
+   19.59,
+   "> TURN 180 60   OK"
+  ],
+  [
+   35.38,
+   "> MOVE 900 250   OK"
+  ]
+ ],
+ "terrain": {
+  "ridges_ok": true,
+  "ramp_ok": true,
+  "turn_ok": true,
+  "descent_ok": true,
+  "distance_ridges_m": 2.459,
+  "commanded_ridges_m": 2.5,
+  "climb_m": 0.131,
+  "distance_ramp_m": 1.061,
+  "turn_deg": 179.7,
+  "turn_time_s": 15.8,
+  "max_roll_deg": 14.0,
+  "max_pitch_deg": 15.2,
+  "max_speed_m_s": 0.35
+ },
+ "servo_peak_torque_Nm": {
+  "yaw": 0.14,
+  "shoulder": 0.51,
+  "elbow": 0.85,
+  "wrist": 0.21,
+  "grip": 0.0
+ },
+ "servo_stall_torque_Nm": {
+  "yaw": 2.0,
+  "shoulder": 3.3,
+  "elbow": 2.0,
+  "wrist": 1.0,
+  "grip": 1.0
+ },
+ "servo_peak_tracking_error_deg": {
+  "yaw": 0.06,
+  "shoulder": 2.22,
+  "elbow": 2.15,
+  "wrist": 1.0
+ },
+ "sim_time_s": 41.7,
+ "mass_kg": 5.19
+}

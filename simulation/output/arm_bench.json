@@ -1,0 +1,220 @@
+{
+ "stall_Nm": {
+  "yaw": 2.0,
+  "shoulder": 3.3,
+  "elbow": 2.0,
+  "wrist": 1.0
+ },
+ "rows": [
+  {
+   "pose": "full stretch, 6 deg above horizontal",
+   "payload_g": 0,
+   "torque_Nm": {
+    "yaw": 0.0,
+    "shoulder": 1.34,
+    "elbow": 0.54,
+    "wrist": 0.06
+   },
+   "shoulder_margin": 2.46,
+   "elbow_margin": 3.7,
+   "wrist_margin": 16.16,
+   "shoulder_droop_deg": 0.85
+  },
+  {
+   "pose": "full stretch, 6 deg above horizontal",
+   "payload_g": 100,
+   "torque_Nm": {
+    "yaw": 0.0,
+    "shoulder": 1.84,
+    "elbow": 0.89,
+    "wrist": 0.22
+   },
+   "shoulder_margin": 1.79,
+   "elbow_margin": 2.24,
+   "wrist_margin": 4.56,
+   "shoulder_droop_deg": 1.17
+  },
+  {
+   "pose": "full stretch, 6 deg above horizontal",
+   "payload_g": 150,
+   "torque_Nm": {
+    "yaw": 0.0,
+    "shoulder": 2.08,
+    "elbow": 1.04,
+    "wrist": 0.3
+   },
+   "shoulder_margin": 1.59,
+   "elbow_margin": 1.93,
+   "wrist_margin": 3.31,
+   "shoulder_droop_deg": 1.32
+  },
+  {
+   "pose": "full stretch, 6 deg above horizontal",
+   "payload_g": 200,
+   "torque_Nm": {
+    "yaw": 0.0,
+    "shoulder": 2.31,
+    "elbow": 1.18,
+    "wrist": 0.39
+   },
+   "shoulder_margin": 1.43,
+   "elbow_margin": 1.7,
+   "wrist_margin": 2.58,
+   "shoulder_droop_deg": 1.47
+  },
+  {
+   "pose": "full stretch, 6 deg above horizontal",
+   "payload_g": 300,
+   "torque_Nm": {
+    "yaw": 0.0,
+    "shoulder": 2.82,
+    "elbow": 1.42,
+    "wrist": 0.49
+   },
+   "shoulder_margin": 1.17,
+   "elbow_margin": 1.41,
+   "wrist_margin": 2.06,
+   "shoulder_droop_deg": 1.79
+  },
+  {
+   "pose": "probing soil at the side",
+   "payload_g": 0,
+   "torque_Nm": {
+    "yaw": 0.0,
+    "shoulder": 0.94,
+    "elbow": 0.19,
+    "wrist": 0.06
+   },
+   "shoulder_margin": 3.51,
+   "elbow_margin": 10.45,
+   "wrist_margin": 17.94,
+   "shoulder_droop_deg": 0.6
+  },
+  {
+   "pose": "probing soil at the side",
+   "payload_g": 100,
+   "torque_Nm": {
+    "yaw": 0.0,
+    "shoulder": 1.33,
+    "elbow": 0.39,
+    "wrist": 0.2
+   },
+   "shoulder_margin": 2.49,
+   "elbow_margin": 5.15,
+   "wrist_margin": 5.05,
+   "shoulder_droop_deg": 0.84
+  },
+  {
+   "pose": "probing soil at the side",
+   "payload_g": 150,
+   "torque_Nm": {
+    "yaw": 0.0,
+    "shoulder": 1.52,
+    "elbow": 0.49,
+    "wrist": 0.27
+   },
+   "shoulder_margin": 2.17,
+   "elbow_margin": 4.07,
+   "wrist_margin": 3.66,
+   "shoulder_droop_deg": 0.97
+  },
+  {
+   "pose": "probing soil at the side",
+   "payload_g": 200,
+   "torque_Nm": {
+    "yaw": 0.0,
+    "shoulder": 1.7,
+    "elbow": 0.59,
+    "wrist": 0.35
+   },
+   "shoulder_margin": 1.94,
+   "elbow_margin": 3.4,
+   "wrist_margin": 2.86,
+   "shoulder_droop_deg": 1.08
+  },
+  {
+   "pose": "probing soil at the side",
+   "payload_g": 300,
+   "torque_Nm": {
+    "yaw": 0.0,
+    "shoulder": 2.03,
+    "elbow": 0.74,
+    "wrist": 0.51
+   },
+   "shoulder_margin": 1.62,
+   "elbow_margin": 2.69,
+   "wrist_margin": 1.96,
+   "shoulder_droop_deg": 1.29
+  },
+  {
+   "pose": "home",
+   "payload_g": 0,
+   "torque_Nm": {
+    "yaw": 0.0,
+    "shoulder": 0.17,
+    "elbow": 0.49,
+    "wrist": 0.05
+   },
+   "shoulder_margin": 18.95,
+   "elbow_margin": 4.09,
+   "wrist_margin": 18.69,
+   "shoulder_droop_deg": 0.11
+  },
+  {
+   "pose": "home",
+   "payload_g": 100,
+   "torque_Nm": {
+    "yaw": 0.0,
+    "shoulder": 0.42,
+    "elbow": 0.82,
+    "wrist": 0.19
+   },
+   "shoulder_margin": 7.84,
+   "elbow_margin": 2.43,
+   "wrist_margin": 5.16,
+   "shoulder_droop_deg": 0.27
+  },
+  {
+   "pose": "home",
+   "payload_g": 150,
+   "torque_Nm": {
+    "yaw": 0.0,
+    "shoulder": 0.55,
+    "elbow": 1.0,
+    "wrist": 0.27
+   },
+   "shoulder_margin": 6.0,
+   "elbow_margin": 2.0,
+   "wrist_margin": 3.72,
+   "shoulder_droop_deg": 0.35
+  },
+  {
+   "pose": "home",
+   "payload_g": 200,
+   "torque_Nm": {
+    "yaw": 0.0,
+    "shoulder": 0.67,
+    "elbow": 1.18,
+    "wrist": 0.35
+   },
+   "shoulder_margin": 4.96,
+   "elbow_margin": 1.7,
+   "wrist_margin": 2.9,
+   "shoulder_droop_deg": 0.42
+  },
+  {
+   "pose": "home",
+   "payload_g": 300,
+   "torque_Nm": {
+    "yaw": 0.0,
+    "shoulder": 0.91,
+    "elbow": 1.48,
+    "wrist": 0.5
+   },
+   "shoulder_margin": 3.63,
+   "elbow_margin": 1.35,
+   "wrist_margin": 1.98,
+   "shoulder_droop_deg": 0.58
+  }
+ ]
+}

@@ -1,0 +1,8 @@
+__pycache__/
+*.pyc
+*.blend1
+firmware/test_host/build/
+firmware/.pio/
+simulation/model/_bench.xml
+blender/renders/*_frames/
+.venv/

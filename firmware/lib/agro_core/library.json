@@ -1,0 +1,9 @@
+{
+  "name": "agro_core",
+  "version": "1.0.0",
+  "description": "Hardware-independent control core of AgroBot Mk1 (kinematics, drive, arm, missions, protocol)",
+  "build": {
+    "srcFilter": ["+<*>", "-<c_api.cpp>"],
+    "flags": ["-std=gnu++17"]
+  }
+}

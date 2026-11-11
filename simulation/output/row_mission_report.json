@@ -1,0 +1,110 @@
+{
+ "scenario": "row",
+ "plants": [],
+ "events": [
+  [
+   1.0,
+   "> ROW 3 610 600 335   OK"
+  ],
+  [
+   19.41,
+   "pump on"
+  ],
+  [
+   21.42,
+   "pump off"
+  ],
+  [
+   56.23,
+   "pump on"
+  ],
+  [
+   58.24,
+   "pump off"
+  ],
+  [
+   62.28,
+   "> PICK 198 304 289 42   OK"
+  ],
+  [
+   93.63,
+   "> MOVE 500 250   OK"
+  ]
+ ],
+ "row_mission": {
+  "completed": true,
+  "duration_s": 62.3,
+  "soil_log_pct": [
+   24,
+   66,
+   27
+  ],
+  "true_moisture_pct": [
+   24.0,
+   66.0,
+   27.0
+  ],
+  "final_x_m": 1.8027,
+  "expected_x_m": 1.81,
+  "lateral_drift_m": 0.001,
+  "heading_drift_deg": 0.08,
+  "odometry_x_m": 1.804,
+  "deepest_probe_m": -0.0433,
+  "pump_events": [
+   [
+    19.41,
+    "pump on"
+   ],
+   [
+    21.42,
+    "pump off"
+   ],
+   [
+    56.23,
+    "pump on"
+   ],
+   [
+    58.24,
+    "pump off"
+   ]
+  ]
+ },
+ "harvest": {
+  "completed": true,
+  "fruit_start_world": [
+   2.0,
+   0.305,
+   0.289
+  ],
+  "fruit_max_height_m": 0.706,
+  "fruit_end_robot_frame": [
+   -0.044,
+   -0.0,
+   0.164
+  ],
+  "in_basket": true,
+  "still_in_basket_after_driving": true
+ },
+ "servo_peak_torque_Nm": {
+  "yaw": 0.29,
+  "shoulder": 1.09,
+  "elbow": 0.84,
+  "wrist": 0.54,
+  "grip": 0.8
+ },
+ "servo_stall_torque_Nm": {
+  "yaw": 2.0,
+  "shoulder": 3.3,
+  "elbow": 2.0,
+  "wrist": 1.0,
+  "grip": 1.0
+ },
+ "servo_peak_tracking_error_deg": {
+  "yaw": 3.69,
+  "shoulder": 2.71,
+  "elbow": 3.9,
+  "wrist": 4.56
+ },
+ "sim_time_s": 98.3,
+ "mass_kg": 5.19
+}
