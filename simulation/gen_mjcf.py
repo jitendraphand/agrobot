@@ -222,7 +222,7 @@ HEADER = """<mujoco model="{name}">
   <size memory="64M"/>
   <visual>
     <global offwidth="1920" offheight="1080" fovy="42"/>
-    <quality shadowsize="8192" offsamples="8"/>
+    <quality shadowsize="4096" offsamples="4"/>
     <headlight ambient="0.38 0.38 0.40" diffuse="0.25 0.25 0.25" specular="0 0 0"/>
     <map znear="0.01" zfar="60" shadowclip="2.5"/>
     <rgba haze="0.78 0.86 0.93 1"/>

@@ -259,7 +259,7 @@ class Recorder:
             draw.rectangle([x0, y0 + 214, x0 + 320, y0 + 240], fill=(0, 0, 0, 150))
             draw.text((x0 + 8, y0 + 217), "onboard camera (ESP32-CAM)", font=self.small, fill=(255, 255, 255, 255))
         # status panel
-        draw.rectangle([18, 18, 560, 108], fill=(0, 0, 0, 140))
+        draw.rectangle([18, 18, 800, 108], fill=(0, 0, 0, 140))
         draw.text((30, 24), self.caption, font=self.font, fill=(255, 255, 255, 255))
         draw.text((30, 58), self.sub, font=self.small, fill=(215, 235, 215, 255))
         draw.text((30, 82), f"t = {sim.d.time:5.1f} s    firmware state: {sim.fw.state}", font=self.small, fill=(200, 200, 200, 255))

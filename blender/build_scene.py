@@ -289,6 +289,14 @@ def save_and_render(scene, name, render, animation=False):
         scene.render.image_settings.file_format = "PNG"
         scene.render.filepath = os.path.join(frames, "f_")
         bpy.ops.render.render(animation=True)
+        import shutil
+        import subprocess
+        if shutil.which("ffmpeg"):
+            mp4 = os.path.join(RENDERS, name + ".mp4")
+            subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-framerate", str(scene.render.fps), "-i",
+                            os.path.join(frames, "f_%04d.png"), "-c:v", "libx264", "-crf", "20", "-pix_fmt", "yuv420p",
+                            "-movflags", "+faststart", mp4], check=True)
+            print("encoded", mp4)
     else:
         scene.render.image_settings.file_format = "PNG"
         scene.render.filepath = os.path.join(RENDERS, name + ".png")
@@ -543,7 +551,7 @@ def scene_studio(render):
     area_light(scene, "Fill", (-0.6, -2.2, 1.0), (0.1, 0, 0.2), 45, 2.2, (0.9, 0.95, 1.0))
     area_light(scene, "Rim", (-1.6, 1.4, 1.8), (0.1, 0, 0.25), 110, 1.0)
     add_camera(scene, (0.98, -1.12, 0.62), (0.10, 0.0, 0.20), lens=58)
-    setup_cycles(scene, samples=96)
+    setup_cycles(scene, samples=72, res=(1600, 900))
     save_and_render(scene, "agrobot_studio", render)
 
 
@@ -561,7 +569,8 @@ def scene_field(render):
     crop_rows(scene)
     world_sky(scene)
     add_camera(scene, (2.12, -0.10, 0.56), (1.24, 0.19, 0.14), lens=33)
-    setup_cycles(scene, samples=96)
+    setup_cycles(scene, samples=72, res=(1600, 900))
+    scene.view_settings.exposure = -0.5
     save_and_render(scene, "agrobot_field", render)
 
 
@@ -613,7 +622,7 @@ def scene_exploded(render):
     area_light(scene, "Key", (-1.5, -2.0, 3.0), (0.2, 0, 0.4), 260, 2.5)
     area_light(scene, "Fill", (2.0, -1.0, 1.5), (0.2, 0, 0.4), 90, 2.5)
     add_camera(scene, (1.45, -1.75, 1.25), (0.18, 0.0, 0.36), lens=50)
-    setup_cycles(scene, samples=64)
+    setup_cycles(scene, samples=64, res=(1600, 900))
     save_and_render(scene, "agrobot_exploded", render)
 
 
@@ -635,7 +644,7 @@ def scene_anim(render, speed=4.0, fps=24, res=(960, 540), samples=24, t0=None, t
 
     # spray cone under the nozzle
     bm = bmesh.new()
-    bmesh.ops.create_cone(bm, cap_ends=False, segments=24, radius1=0.0, radius2=0.085, depth=0.36)
+    bmesh.ops.create_cone(bm, cap_ends=False, segments=24, radius1=0.004, radius2=0.05, depth=0.30)
     me = bpy.data.meshes.new("Spray")
     bm.to_mesh(me)
     bm.free()
@@ -643,9 +652,9 @@ def scene_anim(render, speed=4.0, fps=24, res=(960, 540), samples=24, t0=None, t
     scene.collection.objects.link(spray)
     spray.parent = empties["tool"]
     tcp = man["tcp"]["nozzle"]
-    spray.location = (tcp[0] * MM, tcp[1] * MM, tcp[2] * MM - 0.18)
+    spray.location = (tcp[0] * MM, tcp[1] * MM, tcp[2] * MM - 0.15)
     spray.rotation_euler = (math.pi, 0, 0)
-    sm = principled("spray", (0.7, 0.88, 1.0), rough=0.3, alpha=0.22, emission=(0.6, 0.85, 1.0, 0.6))
+    sm = principled("spray", (0.55, 0.80, 1.0), rough=0.3, alpha=0.10, emission=(0.5, 0.8, 1.0, 1.5))
     try:
         sm.blend_method = "BLEND"
     except Exception:       # noqa: BLE001
@@ -669,10 +678,10 @@ def scene_anim(render, speed=4.0, fps=24, res=(960, 540), samples=24, t0=None, t
         fruit.rotation_mode = "QUATERNION"
     cam, tgt = add_camera(scene, (0, 0, 1), (0, 0, 0.2), lens=35)
     # camera path in the robot frame: (sim time, offset from chassis, look-at offset)
-    cam_keys = [(0, (-1.1, -1.25, 0.75), (0.25, 0.15, 0.15)), (12, (0.2, -1.25, 0.55), (0.1, 0.2, 0.15)),
-                (30, (0.95, -0.95, 0.55), (0.1, 0.2, 0.15)), (48, (0.15, -1.15, 0.6), (0.1, 0.2, 0.18)),
-                (64, (0.9, -0.95, 0.6), (0.12, 0.22, 0.22)), (80, (0.75, -0.9, 0.75), (0.0, 0.1, 0.25)),
-                (99, (1.3, -1.1, 0.7), (0.0, 0.0, 0.2))]
+    cam_keys = [(0, (-1.2, -0.9, 0.80), (0.25, 0.10, 0.15)), (12, (1.25, -0.45, 0.65), (0.1, 0.2, 0.16)),
+                (30, (1.30, -0.20, 0.70), (0.1, 0.2, 0.16)), (48, (1.20, -0.50, 0.65), (0.1, 0.2, 0.18)),
+                (64, (1.25, -0.30, 0.70), (0.12, 0.2, 0.22)), (80, (1.10, -0.60, 0.80), (0.0, 0.1, 0.25)),
+                (99, (1.40, -0.90, 0.75), (0.0, 0.0, 0.2))]
 
     def cam_at(time):
         for a, b in zip(cam_keys, cam_keys[1:]):
@@ -718,6 +727,7 @@ def scene_anim(render, speed=4.0, fps=24, res=(960, 540), samples=24, t0=None, t
     setup_cycles(scene, samples=samples, res=res)
     scene.cycles.adaptive_threshold = 0.06
     scene.render.use_persistent_data = True
+    scene.view_settings.exposure = -0.5
     save_and_render(scene, "agrobot_mission_anim", render, animation=True)
 
 
@@ -747,6 +757,10 @@ def main():
                 kw["t0"] = opts["t0"]
             if "t1" in opts:
                 kw["t1"] = opts["t1"]
+            if "fps" in opts:
+                kw["fps"] = int(opts["fps"])
+            if "resx" in opts and "resy" in opts:
+                kw["res"] = (int(opts["resx"]), int(opts["resy"]))
             scene_anim(render, **kw)
         else:
             raise SystemExit(f"unknown scene '{n}'")

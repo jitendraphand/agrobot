@@ -1,0 +1,76 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  firmware-core:
+    name: Firmware core (host tests)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Unit tests
+        run: make -C firmware/test_host test
+      - name: Type-check the sketch against stub headers
+        run: make -C firmware/test_host sketch-check
+      - name: Build the simulator library
+        run: make -C firmware/test_host lib
+
+  firmware-esp32:
+    name: Firmware (ESP32 build)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - uses: actions/cache@v4
+        with:
+          path: ~/.platformio
+          key: pio-${{ hashFiles('firmware/platformio.ini') }}
+      - name: Install PlatformIO
+        run: pip install platformio
+      - name: Build
+        run: pio run -d firmware
+
+  cad:
+    name: CAD (build, fit check, clash check)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install CadQuery
+        run: pip install cadquery
+      - name: Build every part and check it fits the printer
+        run: python cad/build.py --no-assembly
+      - name: Clash check
+        run: python cad/check_interference.py
+      - name: Geometry header is up to date
+        run: |
+          python tools/gen_firmware_header.py
+          git diff --exit-code firmware/lib/agro_core/robot_geometry.h
+
+  simulation:
+    name: Simulation (firmware in the loop, no video)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install
+        run: pip install mujoco numpy pillow cadquery
+      - name: Generate the MuJoCo models
+        run: python simulation/gen_mjcf.py
+      - name: Crop-row mission
+        run: |
+          python simulation/run_sim.py row --no-video
+          python - <<'PY'
+          import json
+          r = json.load(open("simulation/output/row_mission_report.json"))
+          assert r["row_mission"]["completed"], r
+          assert r["harvest"]["in_basket"], r
+          PY
