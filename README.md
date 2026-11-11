@@ -84,6 +84,7 @@ cd firmware && pio run -t upload       # then join WiFi "AgroBot-XXXX" and open 
 ```bash
 pip install -r requirements.txt
 python cad/build.py                    # STEP, STL, manifest, print report (fails if a part outgrows the printer)
+python cad/check_meshes.py             # every STL closed, single body, on the bed
 python cad/check_interference.py       # clash check of the assembled robot
 python tools/gen_firmware_header.py    # firmware geometry from the CAD parameters
 make -C firmware/test_host test        # control-core unit tests
@@ -100,6 +101,7 @@ model, the renders and the firmware all move together.
 | Claim | How it was checked | Result |
 |---|---|---|
 | Every printed part fits the Neptune 4 Max | Bounding boxes against 400 x 400 x 470 mm in `cad/build.py` | pass |
+| Every STL is a single watertight body on the bed | `cad/check_meshes.py` | pass |
 | No two parts occupy the same space | Solid intersection of all 65 bodies in several arm poses, `cad/check_interference.py` | pass (0 clashes in the home and stretched poses) |
 | Arm kinematics, drive control, missions, safety interlocks | 127,470 assertions in `firmware/test_host` | pass |
 | The firmware logic completes the field mission | Firmware-in-the-loop MuJoCo run | pass, numbers above |

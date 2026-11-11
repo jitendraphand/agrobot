@@ -45,9 +45,11 @@ jobs:
         with:
           python-version: "3.11"
       - name: Install CadQuery
-        run: pip install cadquery
+        run: pip install cadquery trimesh scipy
       - name: Build every part and check it fits the printer
         run: python cad/build.py --no-assembly
+      - name: Every STL is one watertight body on the bed
+        run: python cad/check_meshes.py
       - name: Clash check
         run: python cad/check_interference.py
       - name: Geometry header is up to date

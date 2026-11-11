@@ -412,6 +412,11 @@ WEB_HOLES = [(sy * 22.0, sz * 12.0) for sy in (-1, 1) for sz in (-1, 1)]
 CLIP_HOLES = [(22.0, 13.0), (22.0, -13.0)]          # (x, z) on the fork arms
 
 
+def _x_window(x0, x1, width=18.0, height=12.0):
+    """Cutter: rounded cable window through a wall that faces +X."""
+    return (cq.Workplane("YZ").workplane(offset=x0).slot2D(width, height).extrude(x1 - x0))
+
+
 def wrist_fork():
     """U bracket: +Y arm bolts to the wrist horn, -Y arm rides on the journal."""
     hw = P.WRIST_ARM_W / 2
@@ -429,7 +434,7 @@ def wrist_fork():
     for (x, z) in CLIP_HOLES:
         cuts.append(cyl(P.M3_CLEAR, 2 * P.PLATE_OUT + 1, (x, -P.PLATE_OUT - 0.5, z), (0, 1, 0)))
     # cable window in the web
-    cuts.append(rbox(P.WRIST_WEB_X - 0.1, x1 + 0.1, -9, 9, -6, 6, 0.01).edges("|X").fillet(3.0))
+    cuts.append(_x_window(P.WRIST_WEB_X - 0.1, x1 + 0.1))
     return fork.cut(union_all(cuts))
 
 
@@ -451,15 +456,15 @@ def gripper_palm():
         part = part.union(g)
     # idler pivot pillar + pin
     px, py = P.GRIP_X, -P.GRIP_DY
-    part = part.union(cyl(15.0, (-P.FINGER_T / 2 - 0.5) - zt, (px, py, zt - 0.01)))
-    part = part.union(cyl(8.0, P.FINGER_T + 1.0, (px, py, -P.FINGER_T / 2 - 0.5)))
+    part = part.union(cyl(15.0, (-P.FINGER_T / 2 - 0.5) - zt + 0.01, (px, py, zt - 0.01)))
+    part = part.union(cyl(8.0, P.FINGER_T + 1.0 + 0.5, (px, py, -P.FINGER_T / 2 - 1.0)))
     cuts = [cyl(P.M3_INSERT, P.M3_INSERT_DEPTH, (px, py, P.FINGER_T / 2 + 0.5 - P.M3_INSERT_DEPTH + 0.01))]
     # gripper servo, output up (+Z), case running back towards the wrist
     cuts.append(servo_pocket(frame((P.GRIP_X, P.GRIP_DY, zt), (-1, 0, 0), (0, 0, 1)),
                              screw_d=P.M3_SELF_TAP, screw_depth=PALM_T + 0.2, through=PALM_T + 1))
     for (y, z) in WEB_HOLES:
         cuts.append(cyl(P.M3_CLEAR, 6, (PALM_X0 - 0.5, y, z), (1, 0, 0)))
-    cuts.append(rbox(PALM_X0 - 0.1, PALM_X0 + 5.1, -9, 9, -6, 6, 0.01).edges("|X").fillet(3.0))
+    cuts.append(_x_window(PALM_X0 - 0.1, PALM_X0 + 5.1))
     return part.cut(union_all(cuts))
 
 

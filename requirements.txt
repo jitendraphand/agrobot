@@ -3,5 +3,7 @@
 cadquery>=2.4        # cad/build.py            (Python 3.10 - 3.12)
 mujoco>=3.1          # simulation/
 numpy
+trimesh             # cad/check_meshes.py
+scipy
 pillow
 # bpy                # blender/build_scene.py - or run it inside Blender 4.2+ instead

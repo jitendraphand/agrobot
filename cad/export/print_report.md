@@ -33,4 +33,4 @@ Mass = solid volume x density x 0.55 (4 perimeters + ~25 % infill). Treat it as 
 | `bottle_holder` | 1 | PETG | 72 x 72 x 120 | 33 | yes | Upright. |
 | `pump_saddle` | 1 | PETG | 58 x 60 x 14 | 13 | yes | Flat. |
 
-**Totals:** PETG ~2316 g, TPU ~511 g, 35 printed pieces from 26 unique files.
+**Totals:** PETG ~2315 g, TPU ~511 g, 35 printed pieces from 26 unique files.
