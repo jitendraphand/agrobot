@@ -431,8 +431,9 @@ def wrist_fork():
             cyl(P.JOURNAL_D + P.JOURNAL_CLEAR, P.PLATE_T + 0.2, (0, -P.PLATE_OUT - 0.1, 0), (0, 1, 0))]
     for (y, z) in WEB_HOLES:
         cuts.append(cyl(P.M3_CLEAR, P.PLATE_T + 0.2, (P.WRIST_WEB_X - 0.1, y, z), (1, 0, 0)))
+    # heat-set inserts for the tool clips (a through-bolt would foul the forearm)
     for (x, z) in CLIP_HOLES:
-        cuts.append(cyl(P.M3_CLEAR, 2 * P.PLATE_OUT + 1, (x, -P.PLATE_OUT - 0.5, z), (0, 1, 0)))
+        cuts.append(cyl(P.M3_INSERT, 2 * P.PLATE_OUT + 1, (x, -P.PLATE_OUT - 0.5, z), (0, 1, 0)))
     # cable window in the web
     cuts.append(_x_window(P.WRIST_WEB_X - 0.1, x1 + 0.1))
     return fork.cut(union_all(cuts))

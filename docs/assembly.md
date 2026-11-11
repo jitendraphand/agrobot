@@ -30,10 +30,11 @@ multimeter, flush cutters, 3 mm and 4 mm drill bits for cleaning holes.
    | `forearm` | 2, in the tips of the elbow and wrist journals |
    | `upper_arm_brace` | 4 (two per side) |
    | `gripper_palm` | 1 in the top of the idler pin |
+   | `wrist_fork` | 4, two in each arm for the tool clips (push them in from the outside) |
 
 ## 1. Drive train
 
-1. Bolt each gear motor to the inside of its wall pad with six M3 x 8
+1. Bolt each gear motor to the inside of its wall pad with six M3 x 10
    screws from outside. The shaft goes through the lower hole, so the
    gearbox sits 7 mm **above** the axle; encoder motors go at the rear.
 2. Slide a hex coupler on each shaft, grub screw on the flat, leaving about
@@ -55,7 +56,7 @@ multimeter, flush cutters, 3 mm and 4 mm drill bits for cleaning holes.
    screw the plate to its four bosses (M3 x 8).
 4. Put the HC-SR04 in the pocket at the back of `front_bumper`, feed its
    four wires through the slot in the front wall and screw the bumper on
-   (2 x M3 x 16).
+   (2 x M3 x 10).
 
 ## 3. Deck and arm base
 
@@ -69,8 +70,8 @@ multimeter, flush cutters, 3 mm and 4 mm drill bits for cleaning holes.
    heads in the counterbores), then press the turntable onto the centred
    yaw servo so the tower is at the **front** and fix the horn screw
    through the centre hole.
-5. Fit the three `turntable_clip` hooks with M3 x 30 screws through the
-   remaining ring holes. The turntable must turn freely with no rocking;
+5. Fit the three `turntable_clip` hooks with M3 x 40 screws through the
+   remaining ring holes (clip, ring and deck, nut underneath). The turntable must turn freely with no rocking;
    if it binds, add a washer under each clip.
 
 ## 4. Arm
@@ -99,7 +100,7 @@ multimeter, flush cutters, 3 mm and 4 mm drill bits for cleaning holes.
 
 1. Gripper servo (MG996R) into `gripper_palm` from above, shaft at the
    front, on the same side as the horn discs of the arm.
-2. Bolt `gripper_palm` to the fork web (4 x M3 x 12 with nuts).
+2. Bolt `gripper_palm` to the fork web (4 x M3 x 16 with nuts).
 3. Horn disc on the gripper servo; bolt `finger_drive` to it so that the
    finger points straight forward when the servo is at its closed end.
 4. Drop `finger_idle` over the pin with its teeth meshed so that both
@@ -107,7 +108,9 @@ multimeter, flush cutters, 3 mm and 4 mm drill bits for cleaning holes.
 5. Press a `finger_pad` on each finger, dish facing inwards, with a drop
    of cyanoacrylate.
 6. `probe_clip` on the right-hand fork arm (the idler side), `nozzle_clip`
-   on the left (2 x M3 x 16 through both, nuts on the far side). Slide the
+   on the left, each with 2 x M3 x 8 into the inserts in the fork arms.
+   Do not use longer screws: anything that pokes through the arm rubs on
+   the forearm. Slide the
    soil sensor into the clip and zip-tie it. **Seal the electronics at the
    top of the sensor** with conformal coating, nail varnish or hot glue:
    only the blade below the white line is meant to get wet.

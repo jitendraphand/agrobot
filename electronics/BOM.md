@@ -20,7 +20,7 @@ fit-checked by me; check the "verify" column before buying.
 | D2 | JGB37-520 12 V gear motor, 66 rpm, no encoder (front axle) | 2 | Rs 450-700 | Same gearbox as D1. You may also buy four of D1. |
 | D3 | BTS7960 43 A H-bridge module | 2 | Rs 250-700 | Single-channel board with the tall heat sink. |
 | D4 | 12 mm hex wheel coupler, 6 mm bore, M4 end thread | 4 | Rs 60-120 | Length 18 mm. |
-| D5 | M3 x 8 pan-head screws (motor faces) | 24 | - | From the fastener kit. |
+| D5 | M3 x 10 pan-head screws (motor faces) | 24 | - | From the fastener kit. They pass through 6 mm of wall; do not use longer ones, the gearbox threads are shallow. |
 
 Only the two **rear** motors need encoders: the firmware reads one encoder
 per side. Plain JGB37-520 motors are much easier to find than the encoder
@@ -76,8 +76,8 @@ version; if a seller only has a different ratio, pick 60-110 rpm and update
 
 | # | Part | Qty | Notes |
 |---|---|---|---|
-| H1 | M3 brass heat-set inserts (M3 x 5 mm, OD 4.6 mm) | 40 | Pack of 100 is about Rs 250-400. |
-| H2 | M3 socket-head screws: 6, 8, 12, 16, 20, 30 mm | assortment | About Rs 300-450 for a 400-piece box. |
+| H1 | M3 brass heat-set inserts (M3 x 5 mm, OD 4.6 mm) | 25 used | Pack of 100 is about Rs 250-400. |
+| H2 | M3 socket-head screws: 8, 10, 12, 16, 25 mm, plus 3 x M3 x 40 | assortment | About Rs 300-450 for a 400-piece box; the three 40 mm screws hold the turntable hooks. |
 | H3 | M3 nyloc nuts + washers | 30 | |
 | H4 | M4 x 12 screws + washers (wheels to couplers) | 4 | |
 | H5 | M3 x 10 self-tapping or machine screws for servo tabs | 20 | |
