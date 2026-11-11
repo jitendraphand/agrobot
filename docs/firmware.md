@@ -30,7 +30,7 @@ firmware/
 | Control core unit tests on a PC (`make -C firmware/test_host test`) | **pass**, 127,470 assertions |
 | Control core driving the physics simulation (same C++, via ctypes) | **pass**, see [simulation.md](simulation.md) |
 | `src/*.cpp` type-checked against stub Arduino headers (`make sketch-check`) | **pass** |
-| Compiled with the real ESP32 toolchain (`pio run`) | **pass** in GitHub Actions (`.github/workflows/ci.yml`) |
+| Compiled with the real ESP32 toolchain (`pio run`) | **pass** in GitHub Actions (`.github/workflows/ci.yml`): 1.13 MB flash (86 % of the default app partition), 56 kB RAM (17 %) |
 | Run on an ESP32 with real motors, servos and sensors | **not done** |
 | `esp32cam/esp32cam.ino` on a camera module | **not done** (it is compiled in CI) |
 
@@ -47,6 +47,10 @@ cd firmware
 pio run -t upload            # USB cable to the ESP32
 pio device monitor           # 115200 baud
 ```
+
+The image fills 86 % of the default 1.3 MB app partition. If you add
+features and run out, add `board_build.partitions = huge_app.csv` to
+`platformio.ini` (3 MB app, no OTA).
 
 On boot the robot prints its WiFi name and address:
 

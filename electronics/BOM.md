@@ -98,13 +98,17 @@ Print quantities and per-part masses are in
 
 | Block | Approx. |
 |---|---|
-| Drive train | Rs 3,600 - 6,000 |
-| Arm | Rs 5,000 - 10,500 |
-| Brain, sensors, sprayer | Rs 1,900 - 3,400 |
-| Power | Rs 3,200 - 5,700 |
-| Hardware | Rs 1,200 - 1,800 |
-| Filament | Rs 4,200 - 6,100 |
-| **Total** | **about Rs 19,000 - 33,500** |
+| Drive train | Rs 3,400 - 6,100 |
+| Arm | Rs 5,000 - 10,400 |
+| Brain, sensors, sprayer | Rs 1,800 - 3,200 |
+| Power | Rs 3,100 - 5,500 |
+| Hardware | Rs 1,000 - 1,600 |
+| Filament (3 kg PETG + 1 kg TPU) | Rs 4,200 - 6,100 |
+| **Total** | **about Rs 18,500 - 33,000** |
+
+The low end assumes the cheapest listing of everything and skipping
+nothing; the optional items (camera, ultrasonic, air sensor, buzzer,
+expansion board) add up to about Rs 900 - 1,500 of it.
 
 ## Where the prices came from
 

@@ -43,7 +43,7 @@ firmware compiles against.
 | Controller | ESP32 DevKit V1, PCA9685 servo driver, 2 x BTS7960 motor drivers, MPU6050, optional ESP32-CAM |
 | Power | 3S Li-ion 11.1 V 5200 mAh, roughly 1.5 h of mixed work |
 | Printing | 26 files, 35 pieces, about 2.3 kg PETG + 0.5 kg TPU; largest part 380 x 250 x 80 mm |
-| Budget | about Rs 19,000 - 33,500 including filament ([breakdown](electronics/BOM.md#budget)) |
+| Budget | about Rs 18,500 - 33,000 including filament ([breakdown](electronics/BOM.md#budget)) |
 
 ![Exploded view of the printed parts](blender/renders/agrobot_exploded.png)
 
@@ -102,7 +102,7 @@ model, the renders and the firmware all move together.
 |---|---|---|
 | Every printed part fits the Neptune 4 Max | Bounding boxes against 400 x 400 x 470 mm in `cad/build.py` | pass |
 | Every STL is a single watertight body on the bed | `cad/check_meshes.py` | pass |
-| No two parts occupy the same space | Solid intersection of all 65 bodies in several arm poses, `cad/check_interference.py` | pass (0 clashes in the home and stretched poses) |
+| No two parts occupy the same space | Solid intersection of all 65 bodies, `cad/check_interference.py` | pass: 0 clashes in the home pose, the stretched pose and the six poses the missions use |
 | Arm kinematics, drive control, missions, safety interlocks | 127,470 assertions in `firmware/test_host` | pass |
 | The firmware logic completes the field mission | Firmware-in-the-loop MuJoCo run | pass, numbers above |
 | Servo torque margins | Static bench in MuJoCo, cross-checked by hand | 1.6x at 150 g, full reach |
