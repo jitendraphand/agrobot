@@ -61,7 +61,22 @@ CAD meshes. Commands go in through the firmware's own text protocol.
 
 ![Frames from the row mission](docs/img/row_mission_frames.jpg)
 
-RESULTS_SUMMARY
+What the firmware did in the crop-row run, measured in the simulator
+(details in [docs/simulation.md](docs/simulation.md#results)):
+
+* drove 1.81 m in three moves and stopped 7 mm short, 1 mm off line;
+* pushed the probe 43 mm into the ground at each plant and logged 24 / 66 / 27 % moisture;
+* sprayed the two dry plants for 2 s each and skipped the wet one;
+* picked the fruit, carried it over the shoulder and dropped it in the basket, where it stayed when the robot drove on;
+* peak shoulder torque 1.1 N m against a 3.3 N m servo.
+
+On the rough-ground course it crossed the ridges, climbed the
+131 mm ramp and turned round on it, with a largest tilt of
+15 degrees. The turn on the slope took 16 s
+with one side's motors saturated, which is the weakest result here.
+
+The simulation does not model soil resistance, wheel sinkage or vision,
+and the fruit position is handed to the `PICK` command.
 
 ![Field scene](blender/renders/agrobot_field.png)
 
@@ -104,7 +119,7 @@ model, the renders and the firmware all move together.
 | Every STL is a single watertight body on the bed | `cad/check_meshes.py` | pass |
 | No two parts occupy the same space | Solid intersection of all 65 bodies, `cad/check_interference.py` | pass: 0 clashes in the home pose, the stretched pose and the six poses the missions use |
 | Arm kinematics, drive control, missions, safety interlocks | 127,470 assertions in `firmware/test_host` | pass |
-| The firmware logic completes the field mission | Firmware-in-the-loop MuJoCo run | pass, numbers above |
+| The firmware logic completes the field mission | Firmware-in-the-loop MuJoCo run, also run in CI | pass, numbers above |
 | Servo torque margins | Static bench in MuJoCo, cross-checked by hand | 1.6x at 150 g, full reach |
 | ESP32 firmware compiles | PlatformIO build in GitHub Actions | pass |
 | Parts print and fit real components | not done | **unverified** |

@@ -53,4 +53,43 @@ torque margins and stability. It does not prove field performance.
 Numbers below are from `simulation/output/*_report.json`, produced by the
 commands above.
 
-RESULTS_PLACEHOLDER
+### Crop-row mission (`run_sim.py row`, 98 s of simulated time)
+
+| Measure | Result |
+|---|---|
+| Row mission completed without fault | yes, in 62 s for three plants |
+| Soil readings logged by the firmware | 24 / 66 / 27 % (moisture set in the simulator: 24 / 66 / 27 %) |
+| Plants sprayed | 2 of 3: the two below the 35 % threshold, 2.0 s each; the wet one was skipped |
+| Probe depth reached | 43 mm (commanded 40 mm) |
+| Position after 1.81 m in three moves | 1.803 m true, 1.804 m by odometry (7 mm short) |
+| Lateral drift / heading drift | 1 mm / 0.08 degrees |
+| Pick and place | fruit lifted to 0.71 m on the way over the shoulder and released into the basket: yes |
+| Fruit still in the basket after driving on | yes |
+| Peak servo torque / stall torque | shoulder 1.09 / 3.3 N m, elbow 0.84 / 2.0 N m, wrist 0.54 / 1.0 N m, yaw 0.29 / 2.0 N m |
+| Peak servo following error while moving | 4.6 degrees (wrist) |
+
+The 7 mm position shortfall is the stop tolerance of the distance loop
+(2.5 mm per move) adding up; it is not slip.
+
+### Rough ground (`run_sim.py terrain`, 42 s)
+
+| Measure | Result |
+|---|---|
+| 2.5 m across 25 mm ridges at 0.3 m/s | completed; 2.46 m true distance for 2.50 m of wheel travel |
+| 12 degree ramp | climbed 131 mm over 1.06 m |
+| 180 degree turn on the spot, on the slope | 179.7 degrees, but it took 16 s with one side's motors at full duty |
+| Largest pitch / roll | 15 / 14 degrees (firmware tilt limit is 30) |
+| Top speed reached | 0.35 m/s |
+
+Two things to take from this run. Encoder distance over-reads by about 2 %
+on ridged ground (the wheels follow the bumps, and slip a little). And the
+skid-steer turn on a slope is at the limit of these motors: it finishes,
+slowly. For comparison, on the flat hard floor of the bare scene the same
+`TURN 180 60` takes 7.2 s at a peak duty of 0.87, and the robot's centre
+wanders about 60 mm while it scrubs round. That is still half the commanded
+rate, because tyre scrub is higher than `TRACK_SLIP_FACTOR` assumes. On a
+real slope with loose soil, plan to turn at the row ends where it is level.
+
+### Arm bench (`bench_arm.py`)
+
+See the torque table in [design_notes.md](design_notes.md#arm-torque-budget).
